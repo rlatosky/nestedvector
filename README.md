@@ -129,6 +129,22 @@ Here I add parenthesis to help you reason about how we lay out data recursively:
 tree = (3, 3, 5, 9, 14, (3, 3, 0, 1, 2), (2, 2, 3, 4), (1, 1, 5))
 ```
 
+## How to build and run
+CMake is a *build system generator* that creates Makefiles based off of an abstract project configuration contained in `CMakeLists.txt`. 
+To get started: 
+```bash
+mkdir build
+cd build
+cmake ..
+make 
+```
+To rebuild and run tests:
+```bash
+cd build
+make
+./nestedvector_tests
+```
+
 
 
 
