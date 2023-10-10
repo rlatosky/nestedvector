@@ -65,8 +65,6 @@ v.append(3.141592);
 
 One thing that really helps is to visualize this as a tree!
 
-```c++
-
 
 ## Approaches
 
