@@ -40,11 +40,12 @@ memory at a low level, very carefully.
 For simplicity, we are willing to make a few extra tradeoffs to make this happen.
 - There will be NO ability to insert data anywhere except at the very back 
 - You know the size of each vector at each nesting level ahead of time. 
+- You can pretend that the nested vector's enclosed data is always of type `double`. (This is just so that you don't have to worry about writing templates just yet!)
 
 To populate this nested vector, I expect it'll look something like this:
 
 ```c++
-NestedVector<double> v(2);  // This example (same as above) has just two nesting levels
+NestedVector v(2);  // This example (same as above) has just two nesting levels
 
 v.reserve(0, 3); // Reserve space for three items at the outer level
 v.reserve(1, 3); // Reserve space for three items at the next slot in the inner level
@@ -62,8 +63,10 @@ v.reserve(1,1); // Reserve space for one item at the next slot in the inner leve
 v.append(3.141592);
 ```
 
-
 One thing that really helps is to visualize this as a tree!
+
+```c++
+
 
 ## Approaches
 
