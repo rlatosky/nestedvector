@@ -9,6 +9,8 @@ private:
     // TODO: Add data structures here!
     std::vector<size_t> tree; // size_t is the largest size possible for a value in C++
     std::vector<size_t> data;
+    std::vector<size_t> startindexofnode;
+    size_t level0count;
 
 public:
     NestedVectorHard(size_t depth);
