@@ -37,7 +37,8 @@ void NestedVectorHard::reserve(size_t level, size_t count) {
         level0count = count + 2;
         tree.push_back(count);
         for (auto i : count + 1)
-            tree.push_back(0);
+            tree.push_back(0); // includes size, and the other zeros
+        return;
     }
 
     /* Second command: reserve(4) */
@@ -49,46 +50,15 @@ void NestedVectorHard::reserve(size_t level, size_t count) {
     /* Now update at depth 0 */
     for (size_t i = 2; i < level0count; i++) {
         if (tree[i] == 0)
-            tree[i] = startindexofnode; // This will only work at the first node
+            tree[i] = startindexofnode[i - 2];
             return;
         else
             std::cout << "Size is full" << std::endl;
             return;
     }
 
-	/*
-	 * First, we iterate over depth (let's say 2)
-	 * 
-	 * The first time through (at depth = 0) we first push the count as index 0 of the tree vector
-	 * and then push back however many zeros we need to allocate due to the count (we remember size is zero)
-	 * 
-	 * */
-	
-	if ( ((level - 0) | (m_depth - level)) >= 0 ) // Check if level is between 0 and m_depth (fast method)
-		tree.push_back(count);	// set first number of node (capacity)
-		for (auto i : count + 1)
-			tree.push_back(0); // initialize it with a whole lotta zeros
-			
-	// Check if level matches with m_depth
-	if ( (level >= 0) && (level <= (m_depth - 1)) ) // Check if level is between 0 and m_depth (slower method)
-		tree.push_back(count);	// set first number of node (capacity)
-		for (auto i : count + 1)
-			tree.push_back(0); // initialize it with a whole lotta zeros
-			
-	/* Should look like this (if m_depth is 2, and count is 3):
-	 * 
-	 * FIRST ITERATION (i = 0)
-	 * for (auto i: 2) {
-	 * 		tree.push_back(3); first num is capacity so good
-	 * 		for (auto i : 4)
-	 * 			tree.push_back(0);
-	 * SECOND ITERATION (i = 1)
-	 * for (auto i: 2) {
-	 * 		tree.push_back(3); first num is capacity so good
-	 * 		for (auto i : 4)
-	 * 			tree.push_back(0);
-	*/
-	
+    // Use startindexofnode to find next available node to insert data...
+
 }
 
 void NestedVectorHard::append(double data) {
