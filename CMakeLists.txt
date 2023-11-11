@@ -11,8 +11,8 @@ endif()
 
 
 set(NESTEDVECTOR_TESTS_SOURCES
-        src/NestedVectorEasy.cpp
-        src/NestedVectorMedium.cpp
+        #src/NestedVectorEasy.cpp
+        #src/NestedVectorMedium.cpp
         src/NestedVectorHard.cpp
         test/NestedVectorTests.cpp
         )

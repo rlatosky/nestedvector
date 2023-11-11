@@ -16,9 +16,9 @@
 
 NestedVectorHard::NestedVectorHard(size_t depth) : m_depth(depth) {
 	// for (size_t i : depth)
-	tree = []
-	data = []
-	startindexofnode = []
+	tree = {};
+	data = {};
+	startindexofnode = {};
 }
 
 double NestedVectorHard::get(const TensorIndices& indices) {
@@ -28,33 +28,36 @@ double NestedVectorHard::get(const TensorIndices& indices) {
 
 void NestedVectorHard::reserve(size_t level, size_t count) {
 	// We have to check the level - we can't call v.reserve (0, x) twice!
-	if (tree.size().empty())
+	if (std::empty(tree))
 		level = 0;  // default to zero
 
 	/* Let's remove the param level */
 	/* First command: reserve(2) */
-    if (tree.size().empty) {
+    if (std::empty(tree)) {
         level0count = count + 2;
         tree.push_back(count);
-        for (auto i : count + 1)
+        for (size_t i = 0; i < count + 1; i++)
             tree.push_back(0); // includes size, and the other zeros
         return;
     }
 
     /* Second command: reserve(4) */
     tree.push_back(count);
-    startindexofnode.push_back(std::size(tree) - 1) // Should say our first/second/third node is at index (size of tree at the time - 1)
-    for (auto i: count + 1) // We can say level0count + (any other counts) - 1
+    startindexofnode.push_back(std::size(tree) - 1); // Should say our first/second/third node is at index (size of tree at the time - 1)
+
+    // We can say level0count + (any other counts) - 1
+    for (size_t i = 0; i < count + 1; i++)
         tree.push_back(0);
 
     /* Now update at depth 0 */
     for (size_t i = 2; i < level0count; i++) {
-        if (tree[i] == 0)
-            tree[i] = startindexofnode[i - 2];
-            return;
-        else
+        if (tree[i] == 0) {
+            tree[i] = startindexofnode[i - 2]; return;
+        }
+        else {
             std::cout << "Size is full" << std::endl;
             return;
+        }
     }
 
     // Use startindexofnode to find next available node to insert data...
@@ -70,7 +73,7 @@ size_t NestedVectorHard::depth() {
 }
 
 size_t NestedVectorHard::size(const TensorIndices& indices) {
-    // TODO: Implement me!
+    size_t counter = 0;
     return 0;
 }
 

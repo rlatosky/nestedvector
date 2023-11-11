@@ -2,7 +2,8 @@
 // Subject to the terms in the LICENSE file found in the top-level directory.
 //
 #include <vector>
-
+#include <cstddef>
+#include <iostream>
 
 class TensorIndices {
 private:

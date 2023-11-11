@@ -3,13 +3,13 @@
 
 #define CATCH_CONFIG_MAIN
 #include <catch.hpp>
-#include <NestedVectorEasy.hpp>
+#include <NestedVectorHard.hpp>
 
 
 
 TEST_CASE("NestedVector_BasicExample") {
 
-    NestedVectorEasy v(2);
+    NestedVectorHard v(2);
     REQUIRE(v.depth() == 2);
 
     // Test reserving and appending
@@ -47,7 +47,12 @@ TEST_CASE("NestedVector_BasicExample") {
 }
 
 TEST_CASE("NestedVector_AnotherExample") {
+    NestedVectorHard v(2);
 
+    v.reserve(0, 3); // Reserve space for three items at the outer level
+    v.reserve(1, 3); // Reserve space for three items at the next slot in the inner level
+
+    REQUIRE(v.depth() == 2);
 }
 
 
