@@ -28,7 +28,8 @@ TEST_CASE("NestedVector_BasicExample") {
 
     v.reserve(1,1); // Reserve space for one item at the next slot in the inner level
     v.append(3.141592);
-
+    v.append(9.10);
+	v.debug();
 
     // Test that our NestedVector understands its own sizes
 
